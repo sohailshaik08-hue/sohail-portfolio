@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sohail Shaik — software developer, cloud computing student, and product-minded builder.">
+<title>Sohail Shaik | Portfolio</title>
+<style>
+:root {
+  --site-primary: #7657F6;
+  --site-secondary: #15152A;
+  --site-background: #090914;
+  --site-on-primary: #FFFFFF;
+  --site-on-secondary: #F5F3FF;
+  --site-on-background: #F4F2FF;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --muted: #A8A5C2;
+  --surface: #111122;
+  --surface-2: #17172D;
+  --border: rgba(190,180,255,.16);
+  --accent-2: #55D6BE;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background-color: light-dark(var(--site-background), var(--site-background)); color: var(--site-on-background); overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.container { width: min(1120px, calc(100% - 44px)); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px); background: rgba(9,9,20,.82); border-bottom: 1px solid var(--border); }
+.nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.brand { font-family: var(--site-font-heading); font-weight: 850; letter-spacing: -.06em; font-size: 1.22rem; }
+.brand span { color: var(--site-primary); }
+.navlinks { display: flex; align-items: center; gap: 27px; color: var(--muted); font-size: .9rem; }
+.navlinks a:hover { color: #fff; }
+.nav-cta { padding: 11px 16px; border: 1px solid var(--border); border-radius: calc(12px * var(--site-radius-scale)); color: #fff; font-weight: 650; }
+.menu-btn { display: none; background: transparent; color: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 9px 12px; }
+.hero { position: relative; padding: calc(104px * var(--site-spacing-scale)) 0 calc(88px * var(--site-spacing-scale)); }
+.hero-glow { position: absolute; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(118,87,246,.28), transparent 68%); top: 0; right: -110px; pointer-events: none; opacity: var(--site-decoration-opacity); }
+.hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 58px; position: relative; }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent-2); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 750; }
+.dot { width: 7px; height: 7px; background: var(--accent-2); border-radius: 50%; box-shadow: 0 0 16px var(--accent-2); }
+h1 { font-family: var(--site-font-heading); font-size: clamp(3.1rem, 7vw, 5.8rem); line-height: .99; letter-spacing: -.075em; margin: 23px 0; max-width: 750px; }
+.gradient-text { background: linear-gradient(105deg, #A997FF, #65E0D0 85%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p { max-width: 610px; color: var(--muted); font-size: 1.12rem; line-height: 1.8; margin: 0; }
+.hero-actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 19px; border-radius: calc(13px * var(--site-radius-scale)); font-weight: 750; font-size: .93rem; border: 1px solid var(--border); transition: transform .2s, background .2s; cursor: pointer; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--site-primary); color: #fff; border-color: var(--site-primary); box-shadow: 0 10px 32px rgba(118,87,246,.25); }
+.btn-secondary { background: rgba(255,255,255,.03); }
+.socials { display: flex; gap: 20px; margin-top: 27px; color: var(--muted); font-size: .9rem; }
+.socials a:hover { color: #fff; }
+.profile-card { position: relative; background: linear-gradient(145deg, rgba(118,87,246,.16), rgba(85,214,190,.06)); border: 1px solid var(--border); border-radius: calc(28px * var(--site-radius-scale)); padding: 28px; min-height: 350px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 28px 90px rgba(0,0,0,.2); }
+.profile-top { display: flex; justify-content: space-between; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 24px; display: grid; place-items: center; font-size: 2rem; font-weight: 850; letter-spacing: -.08em; background: linear-gradient(135deg, #7657F6, #55D6BE); color: white; box-shadow: 0 14px 35px rgba(118,87,246,.25); }
+.availability { border: 1px solid rgba(85,214,190,.3); color: var(--accent-2); border-radius: 999px; padding: 8px 11px; font-size: .72rem; font-weight: 700; }
+.profile-card h2 { font-size: 1.5rem; letter-spacing: -.04em; margin: 30px 0 7px; }
+.profile-card p { font-size: .92rem; line-height: 1.7; }
+.profile-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.meta-item { background: rgba(8,8,20,.4); padding: 13px; border-radius: 13px; border: 1px solid rgba(255,255,255,.06); }
+.meta-item strong { display: block; font-size: .9rem; }
+.meta-item span { display: block; color: var(--muted); font-size: .75rem; margin-top: 5px; }
+section { padding: calc(78px * var(--site-spacing-scale)) 0; }
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 32px; }
+.kicker { color: var(--site-primary); text-transform: uppercase; font-size: .78rem; font-weight: 800; letter-spacing: .15em; }
+h2.section-title { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.06em; margin: 9px 0 0; }
+.section-desc { color: var(--muted); max-width: 480px; line-height: 1.7; margin: 0; }
+.about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; }
+.panel { border: 1px solid var(--border); background: var(--surface); border-radius: calc(22px * var(--site-radius-scale)); padding: 28px; }
+.panel h3 { margin: 0 0 12px; letter-spacing: -.03em; }
+.panel p { color: var(--muted); line-height: 1.8; margin: 0; }
+.stat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 13px; }
+.stat { background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+.stat strong { display: block; font-size: 1.65rem; letter-spacing: -.05em; }
+.stat span { display: block; margin-top: 5px; color: var(--muted); font-size: .82rem; }
+.skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.skill-card { padding: 21px; background: var(--surface); border: 1px solid var(--border); border-radius: calc(18px * var(--site-radius-scale)); }
+.skill-icon { width: 39px; height: 39px; display: grid; place-items: center; background: rgba(118,87,246,.16); color: #B7A8FF; border-radius: 12px; margin-bottom: 18px; font-size: 1.1rem; font-weight: 800; }
+.skill-card h3 { margin: 0 0 12px; font-size: 1rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag { font-size: .76rem; color: #C9C5E2; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.07); border-radius: 8px; padding: 6px 8px; }
+.project-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+.project { background: var(--surface); border: 1px solid var(--border); border-radius: calc(22px * var(--site-radius-scale)); overflow: hidden; transition: transform .22s, border-color .22s; }
+.project:hover { transform: translateY(-4px); border-color: rgba(118,87,246,.6); }
+.project-art { height: 165px; padding: 24px; display: flex; align-items: end; position: relative; overflow: hidden; background: linear-gradient(135deg, #201944, #101022); }
+.project-art:before, .project-art:after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.13); opacity: var(--site-decoration-opacity); }
+.project-art:before { width: 210px; height: 210px; right: -25px; top: -90px; }
+.project-art:after { width: 140px; height: 140px; right: 10px; top: -54px; }
+.project-art.teal { background: linear-gradient(135deg, #103C42, #111326); }
+.project-art.blue { background: linear-gradient(135deg, #162D56, #111326); }
+.project-art.pink { background: linear-gradient(135deg, #482044, #111326); }
+.project-art.gold { background: linear-gradient(135deg, #4B3517, #111326); }
+.art-label { position: relative; z-index: 1; font-size: .75rem; text-transform: uppercase; letter-spacing: .13em; color: rgba(255,255,255,.72); }
+.project-body { padding: 23px; }
+.project-title-row { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.project h3 { margin: 0; font-size: 1.25rem; letter-spacing: -.035em; }
+.project p { color: var(--muted); line-height: 1.7; font-size: .91rem; margin: 12px 0 18px; }
+.project-links { display: flex; gap: 16px; margin-top: 20px; color: #C1B5FF; font-size: .84rem; font-weight: 700; }
+.project-links a:hover { color: #fff; }
+.experience { display: grid; grid-template-columns: 190px 1fr; gap: 26px; padding: 26px 0; border-bottom: 1px solid var(--border); }
+.experience:last-child { border-bottom: 0; }
+.experience-date { color: var(--muted); font-size: .86rem; }
+.experience h3 { margin: 0 0 6px; }
+.experience .role { color: var(--accent-2); font-size: .88rem; margin-bottom: 11px; }
+.experience p { color: var(--muted); line-height: 1.75; margin: 0; }
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.edu-card { display: flex; gap: 16px; align-items: start; }
+.edu-mark { flex-shrink: 0; width: 45px; height: 45px; display: grid; place-items: center; border-radius: 13px; background: rgba(85,214,190,.12); color: var(--accent-2); font-weight: 850; }
+.edu-card h3 { margin: 0 0 7px; font-size: 1rem; }
+.edu-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.65; }
+.contact-box { border: 1px solid var(--border); border-radius: calc(28px * var(--site-radius-scale)); background: linear-gradient(120deg, rgba(118,87,246,.18), rgba(85,214,190,.07)); padding: clamp(28px,5vw,54px); display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.contact-box h2 { margin: 0 0 12px; font-size: clamp(2rem,4vw,3rem); letter-spacing: -.06em; }
+.contact-box p { color: var(--muted); margin: 0; line-height: 1.7; max-width: 520px; }
+footer { border-top: 1px solid var(--border); padding: 25px 0; color: var(--muted); font-size: .83rem; }
+.footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+footer strong { color: #fff; }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } * { transition: none !important; } }
+@media (max-width: 850px) {
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .profile-card { max-width: 520px; }
+  .skills-grid { grid-template-columns: repeat(2,1fr); }
+  .navlinks { gap: 15px; }
+  .navlinks a:not(.nav-cta) { display: none; }
+}
+@media (max-width: 600px) {
+  .container { width: min(100% - 30px, 1120px); }
+  .hero { padding: 70px 0 55px; }
+  .hero-grid { gap: 35px; }
+  h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+  .section-head { align-items: start; flex-direction: column; }
+  .skills-grid, .project-grid, .edu-grid { grid-template-columns: 1fr; }
+  .experience { grid-template-columns: 1fr; gap: 9px; }
+  .contact-box { align-items: start; flex-direction: column; }
+  .footer-row { flex-direction: column; align-items: start; }
+  .profile-card { padding: 22px; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Sohail Shaik home">sohail<span>.</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a class="nav-cta" href="#contact">Let's connect ↗</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow"><span class="dot"></span> Open to opportunities</div>
+      <h1>Building useful things for the <span class="gradient-text">real world.</span></h1>
+      <p>I'm Sohail Shaik, a Computer Science student focused on software development, cloud computing, and product-minded problem solving. I enjoy turning ideas into practical, user-friendly applications.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">Explore my work <span>↘</span></a>
+        <a class="btn btn-secondary" href="#contact">Get in touch <span>↗</span></a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/SohailShaik08-hue" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://leetcode.com/u/SohailShaik08/" target="_blank" rel="noreferrer">LeetCode ↗</a>
+        <a href="mailto:sohailshaikdec8@gmail.com">Email ↗</a>
+      </div>
+    </div>
+    <aside class="profile-card reveal" aria-label="Profile summary">
+      <div class="profile-top"><div class="avatar">SS</div><div class="availability"><span class="dot" style="display:inline-block;margin-right:6px"></span> Available for opportunities</div></div>
+      <div><h2>Sohail Shaik</h2><p>Developer in progress. Curious by default. Focused on building reliable software and learning through real projects.</p>
+        <div class="profile-meta"><div class="meta-item"><strong>SRM IST</strong><span>B.Tech · CSE</span></div><div class="meta-item"><strong>2027</strong><span>Graduation year</span></div></div>
+      </div>
+    </aside>
+  </div>
+</section>
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">A little about me</div><h2 class="section-title">Curiosity meets execution.</h2></div><p class="section-desc">I like understanding the problem first, then building a solution that is practical, clear, and useful.</p></div>
+    <div class="about-grid">
+      <div class="panel reveal"><h3>Beyond the code</h3><p>I'm pursuing B.Tech in Computer Science with a specialization in Cloud Computing at SRM Institute of Science and Technology. My interests span full-stack development, AI/NLP applications, cloud technologies, and product thinking. I also enjoy collaborating with teams and turning complex ideas into understandable experiences.</p></div>
+      <div class="stat-grid reveal"><div class="stat"><strong>Full-stack</strong><span>Web application development</span></div><div class="stat"><strong>AI + NLP</strong><span>Practical intelligent tools</span></div><div class="stat"><strong>Cloud</strong><span>Learning scalable systems</span></div><div class="stat"><strong>Product</strong><span>User-focused problem solving</span></div></div>
+    </div>
+  </div>
+</section>
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">What I work with</div><h2 class="section-title">Skills & toolkit.</h2></div><p class="section-desc">A growing toolkit for building, shipping, and improving digital products.</p></div>
+    <div class="skills-grid">
+      <article class="skill-card reveal"><div class="skill-icon">⌘</div><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">SQL</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">◈</div><h3>Frontend</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">React</span><span class="tag">Tailwind CSS</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">⌘</div><h3>Backend & Data</h3><div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Flask</span><span class="tag">MongoDB</span><span class="tag">MySQL</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">☁</div><h3>Cloud & Tools</h3><div class="tags"><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Firebase</span></div></article>
+    </div>
+  </div>
+</section>
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">Selected work</div><h2 class="section-title">Projects with purpose.</h2></div><p class="section-desc">A selection of applications exploring full-stack engineering, AI, and data-driven problem solving.</p></div>
+    <div class="project-grid">
+      <article class="project reveal"><div class="project-art"><span class="art-label">AI · NLP · Recruitment</span></div><div class="project-body"><div class="project-title-row"><h3>Smart Recruitment Analyzer</h3><span>↗</span></div><p>An NLP-based resume analysis tool designed to extract skills, compare candidates against job roles, and support ATS-style scoring and shortlisting.</p><div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Flask</span><span class="tag">spaCy</span></div><div class="project-links"><a href="https://github.com/sohailshaik08-hue/smart-recruitment-analyzer" target="_blank" rel="noreferrer">View GitHub repo ↗</a></div></div></article>
+      <article class="project reveal"><div class="project-art teal"><span class="art-label">Healthcare · Full stack</span></div><div class="project-body"><div class="project-title-row"><h3>MedIntel</h3><span>↗</span></div><p>A healthcare platform concept with separate patient, doctor, and admin dashboards, built to organize workflows for different user roles.</p><div class="tags"><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">Node.js</span></div><div class="project-links"><a href="https://github.com/sohailshaik08-hue/MedIntel" target="_blank" rel="noreferrer">View GitHub repo ↗</a></div></div></article>
+      <article class="project reveal"><div class="project-art blue"><span class="art-label">Data · Live APIs</span></div><div class="project-body"><div class="project-title-row"><h3>Air Quality Monitor</h3><span>↗</span></div><p>A web application that uses live API data to track air-quality indicators and present pollutant information in a clear interface.</p><div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">REST APIs</span></div><div class="project-links"><a href="https://github.com/SohailShaik08-hue" target="_blank" rel="noreferrer">View GitHub profile ↗</a></div></div></article>
+      <article class="project reveal"><div class="project-art pink"><span class="art-label">Generative AI · Python</span></div><div class="project-body"><div class="project-title-row"><h3>AI Smart Recipe Generator</h3><span>↗</span></div><p>An AI-powered recipe assistant that generates meal ideas from user inputs, helping make cooking inspiration more accessible.</p><div class="tags"><span class="tag">Python</span><span class="tag">Gemini API</span><span class="tag">AI</span></div><div class="project-links"><a href="https://github.com/sohailshaik08-hue/ai-smart-recipe-generator" target="_blank" rel="noreferrer">View GitHub repo ↗</a></div></div></article>
+      <article class="project reveal"><div class="project-art gold"><span class="art-label">MERN · Travel tech</span></div><div class="project-body"><div class="project-title-row"><h3>TravEasy</h3><span>↗</span></div><p>A travel booking platform concept with authentication, user and admin roles, and dynamic flight and seat management.</p><div class="tags"><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">Node.js</span></div><div class="project-links"><a href="https://github.com/sohailshaik08-hue/TravEasy" target="_blank" rel="noreferrer">View GitHub repo ↗</a></div></div></article>
+      <article class="project reveal"><div class="project-art"><span class="art-label">Web · Database</span></div><div class="project-body"><div class="project-title-row"><h3>Online Food Ordering</h3><span>↗</span></div><p>A full-stack food ordering application with a web interface, server-side functionality, and MySQL-backed data management.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">MySQL</span></div><div class="project-links"><a href="https://github.com/sohailshaik08-hue/Online-Food-Ordering-Web-App-master" target="_blank" rel="noreferrer">View GitHub repo ↗</a></div></div></article>
+    </div>
+  </div>
+</section>
+<section id="experience">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">Experience</div><h2 class="section-title">Learning by doing.</h2></div><p class="section-desc">Experience that combines product thinking, teamwork, and technical exploration.</p></div>
+    <div class="panel reveal">
+      <div class="experience"><div class="experience-date">Internship</div><div><h3>Airtribe</h3><div class="role">Product Management Intern</div><p>Explored product management practices and the process of understanding user needs, structuring problems, and thinking through product decisions. Add your exact responsibilities, outcomes, and dates here.</p></div></div>
+      <div class="experience"><div class="experience-date">Leadership & volunteering</div><div><h3>Slug N Plug Technical Club</h3><div class="role">Technical & Marketing Manager</div><p>Helped lead a team of 20+ members and worked on marketing and sponsorship coordination for club activities. Also contributed time as a volunteer with an orphanage NGO.</p></div></div>
+    </div>
+  </div>
+</section>
+<section id="education">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">Background</div><h2 class="section-title">Education & growth.</h2></div></div>
+    <div class="edu-grid">
+      <article class="panel edu-card reveal"><div class="edu-mark">SRM</div><div><h3>SRM Institute of Science and Technology</h3><p>B.Tech in Computer Science and Engineering — Cloud Computing<br>Expected graduation: 2027<br>CGPA: 9.6 (confirm current value before publishing)</p></div></article>
+      <article class="panel edu-card reveal"><div class="edu-mark">↗</div><div><h3>Continuous learning</h3><p>Building skills in cloud computing, software engineering, AI/NLP, data structures, and product management. Add verified certifications and achievements here.</p></div></article>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal"><div><div class="kicker">Have a role or idea in mind?</div><h2>Let's build something meaningful.</h2><p>I'm open to connecting about software development, cloud, and product-focused opportunities. Feel free to reach out.</p><p style="margin-top:16px"><a href="mailto:sohailshaikdec8@gmail.com">✉ sohailshaikdec8@gmail.com</a><br><a href="tel:+916300519707">☎ +91 6300519707</a></p></div><div class="hero-actions"><a class="btn btn-primary" href="mailto:sohailshaikdec8@gmail.com">Email me ↗</a><a class="btn btn-secondary" href="tel:+916300519707">Call me ↗</a><a class="btn btn-secondary" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div>
+  </div>
+</section>
+</main>
+<footer><div class="container footer-row"><div>© <span id="year"></span> <strong>Sohail Shaik</strong>. Built with curiosity.</div><a href="#home">Back to top ↑</a></div></footer>
+</div>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
